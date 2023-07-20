@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: batch_local
+    password: batchlocal123
+    driver-class-name: org.h2.Driver
+  batch:
+    jdbc:
+      initialize-schema: always
