@@ -1,9 +1,19 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:mydb
-    username: batch_local
+    # zeroDateTimeBehavior=convertToNull : 로컬 데이트 타임과 같은 값들이 0인 값들을 null로 변경
+    # characterEncoding=UTF-8 : jdbc를 통해 db로 보내는 값을 utf-8로 지정
+    # serverTimezone=Asia/Seoul : 서버 시간 설정
+    url: jdbc:mysql://localhost:3306/batch_local?zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    username: batch_local_user
     password: batchlocal123
-    driver-class-name: org.h2.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # hikari : 스프링부트 2.0을 기점으로 기본 dbcp, 데이터 베이스 커넥션 풀이 톰캣 dbcp에서 hikari cp로 변경
+    # hikari cp는 톰캣 dbcp와는 다르게 사용하지 않는 커넥션을 회수하도록 설계가 되었다.
+    hikari:
+      # default 10, mnimum-poll-size도 이를 따라감
+      maximum-pool-size: 20
+
   batch:
     jdbc:
+      # 외부 디비를 연결하는 경우 자동으로 테이블을 생성하는 기능
       initialize-schema: always

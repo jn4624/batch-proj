@@ -1,0 +1,10 @@
+spring:
+  jpa:
+    show-sql: true # SQL 표시 설정
+    properties:
+      hibernate:
+        format_sql: true # SQL 예쁘게 포맷팅 설정
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: trace # 파라미터까지 표시되도록 설정
