@@ -1,7 +1,7 @@
 package com.app.batch.repository.user;
 
 import com.app.batch.repository.BaseEntity;
-import com.vladmihalcea.hibernate.type.json.JsonStringType;
+import com.vladmihalcea.hibernate.type.json.JsonType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -16,7 +16,7 @@ import java.util.Map;
 @ToString
 @Entity
 @Table(name = "user")
-@TypeDef(name = "json", typeClass = JsonStringType.class) // json의 타입을 정의한다.
+@TypeDef(name = "json", typeClass = JsonType.class) // json의 타입을 정의한다.
 public class UserEntity extends BaseEntity {
     @Id
     private String userId;
