@@ -9,9 +9,9 @@ import javax.transaction.Transactional;
 public interface BookingRepository extends JpaRepository<BookingEntity, Integer> {
     @Transactional
     @Modifying
-    @Query(value =  "UPDATE BookingEntity b" +
-                    "SET b.usedPass = :usedPass," +
-                        "b.modifiedAt = CURRENT_TIMESTAMP" +
-                    "WHERE b.passSeq = :passSeq")
+    @Query(value =  "UPDATE BookingEntity b " +
+                    "SET b.usedPass = :usedPass, " +
+                        "b.modifiedAt = CURRENT_TIMESTAMP " +
+                    "WHERE b.passSeq = :passSeq ")
     int updateUsedPass(Integer passSeq, boolean usedPass);
 }
